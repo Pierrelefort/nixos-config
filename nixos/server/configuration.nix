@@ -120,19 +120,25 @@
 # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Common cli tools
-    htop
+    vim
+    fzf
+    # Nice to have
+    btop
     gdu
+    duf
     bat
     eza
     ripgrep
-    fzf
-    vim
+    parallel
+    tldr
     # Theme for shell
     oh-my-posh
     # Dotfiles management
     chezmoi
     # Docker cli tools
     lazydocker
+    # Git cli tools
+    lazygit
     # wireguard libs
     wireguard-tools
   ];
