@@ -119,10 +119,21 @@
 # List packages installed in system profile. To search, run:
 # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # Common cli tools
     htop
     gdu
+    bat
+    eza
+    ripgrep
+    fzf
     vim
+    # Theme for shell
+    oh-my-posh
+    # Dotfiles management
     chezmoi
+    # Docker cli tools
+    lazydocker
+    # wireguard libs
     wireguard-tools
   ];
   
@@ -149,6 +160,14 @@
   };
 
 # List services that you want to enable:
+  services.fail2ban = {
+    enable = true;
+    ignoreIP = [
+      # Whitelist some subnets
+      "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16"
+      "1.1.1.1"  # Cloudflare DNS IP
+    ];
+  };
 
 # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -164,6 +183,8 @@
     allowedTCPPorts = [ 22 ];
     allowedUDPPorts = [ 51820 ];
   };
+  
+  
 
 # Copy the NixOS configuration file and link it from the resulting system
 # (/run/current-system/configuration.nix). This is useful in case you
