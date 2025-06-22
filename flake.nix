@@ -1,23 +1,22 @@
 {
-  description = "Computers's nix configuration";
+  description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs }: {
-
-    nixosConfigurations = {
-      server = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./nixos/server/configuration.nix
-        ];
-      };
-      framework = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./nixos/framework/configuration.nix
-        ];
-      };
+  outputs = { self, nixpkgs, ... }@inputs: {
+    nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/framework/configuration.nix
+      ];
+    };
+    nixosConfigurations.server = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/server/configuration.nix
+      ];
     };
   };
 }

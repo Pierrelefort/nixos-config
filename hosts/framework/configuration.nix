@@ -84,7 +84,7 @@
     description = "Pierre Lefort";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      qutebrowser
+      # qutebrowser
       bitwarden
     ];
   };
