@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  # Completing for system packages
+  environment.pathsToLink = [ "/share/zsh" ];
+
   environment.systemPackages = with pkgs; [
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -33,6 +36,4 @@
   };
 
   
-  # Completing for system packages
-  environment.pathsToLink = [ "/share/zsh" ];
 }

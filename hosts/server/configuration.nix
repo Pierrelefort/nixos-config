@@ -14,6 +14,8 @@
     ../../modules/chezmoi.nix
     ../../modules/zsh.nix
     ../../modules/fonts.nix
+    ../../modules/nvim.nix
+    ../../modules/rust.nix
   ];
 
   nix.nixPath = [

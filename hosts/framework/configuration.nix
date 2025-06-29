@@ -22,6 +22,8 @@
     ../../modules/zsh.nix
     ../../modules/fonts.nix
     ../../modules/shells.nix
+    ../../modules/nvim.nix
+    ../../modules/rust.nix
   ];
 
   networking.hostName = "framework"; 
